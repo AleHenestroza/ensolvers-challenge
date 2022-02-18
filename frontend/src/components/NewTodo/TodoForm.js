@@ -1,8 +1,13 @@
 import styles from "./TodoForm.module.scss";
 
 const TodoForm = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log("Hola");
+  };
+
   return (
-    <form className={styles.todo_form}>
+    <form className={styles.todo_form} onSubmit={submitHandler}>
       <input
         className={styles.todo_form__input}
         type="text"

@@ -10,7 +10,7 @@ const App = () => {
   ];
   return (
     <div className="app">
-      <h1>Hello World!</h1>
+      <h1>ToDo App</h1>
       <TodoForm />
       <TodoList todos={todos} />
     </div>
