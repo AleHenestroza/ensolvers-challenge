@@ -11,7 +11,7 @@ public class TodoApiApplication {
         SpringApplication.run(TodoApiApplication.class, args);
     }
 
-    // This function will check if the 'ensolvers' MySQL database exists, and if it doesn't, it will run command to create it.
+    // This function will check if the 'ensolvers' database exists, and if it doesn't, it will run command to create it.
     private static void createDbIfNotExists() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
