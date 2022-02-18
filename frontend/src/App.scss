@@ -11,6 +11,11 @@ html {
   font-size: $font-size-base; // Sets the font to 1/1.6 of the base font size (usually 16px)
 }
 
+// Background color
+body {
+  background-color: $secondary-color;
+}
+
 // Typography
 body {
   font-family: $font-family;
@@ -72,4 +77,19 @@ table {
   html {
     font-size: $font-size-xlarge;
   }
+}
+
+// App Styles
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 60%;
+  height: 90vh;
+  padding: 0.5rem;
+  margin: 1rem auto;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+  background-color: #fafafa;
 }
