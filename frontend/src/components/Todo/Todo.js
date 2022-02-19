@@ -7,7 +7,7 @@ const Todo = (props) => {
 
   return (
     <div className={styles.todo}>
-      <p>{props.todo.text}</p>
+      <p>{props.todo.description}</p>
       <button onClick={deleteHandler}>Delete</button>
     </div>
   );
