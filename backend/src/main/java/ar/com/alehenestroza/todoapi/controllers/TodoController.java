@@ -1,4 +1,4 @@
-package ar.com.alehenestroza.todoapi.constrollers;
+package ar.com.alehenestroza.todoapi.controllers;
 
 import ar.com.alehenestroza.todoapi.entities.Todo;
 import ar.com.alehenestroza.todoapi.services.TodoService;
@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 public class TodoController {
     private final TodoService todoService;
