@@ -1,6 +1,6 @@
 import "./App.scss";
 import TodoForm from "./components/NewTodo/TodoForm";
-import TodoList from "./components/UI/TodoList";
+import TodoList from "./components/TodoList/TodoList";
 import { useState, useEffect } from "react";
 
 const App = () => {
@@ -33,7 +33,6 @@ const App = () => {
     require("axios")
       .post(`${process.env.REACT_APP_API_URL}/todos`, todo)
       .then((response) => {
-        console.log(response);
         setTodos([...todos, response.data]);
       })
       .catch((err) => {
@@ -46,8 +45,27 @@ const App = () => {
     require("axios")
       .delete(`${process.env.REACT_APP_API_URL}/todos/${todo.id}`)
       .then((response) => {
-        console.log(response);
         setTodos(todos.filter((t) => t.id !== todo.id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // PUT a ToDo to the API. The API will update the ToDo and return it.
+  const updateTodo = (todo) => {
+    require("axios")
+      .put(`${process.env.REACT_APP_API_URL}/todos`, todo)
+      .then((response) => {
+        setTodos(
+          todos.map((t) => {
+            if (t.id === todo.id) {
+              return response.data;
+            } else {
+              return t;
+            }
+          })
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -58,7 +76,13 @@ const App = () => {
     <div className="app">
       <h1>ToDo App</h1>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} deleteTodo={deleteTodo} />
+      {todos.length > 0 && (
+        <TodoList
+          todos={todos}
+          deleteTodo={deleteTodo}
+          updateTodo={updateTodo}
+        />
+      )}
     </div>
   );
 };

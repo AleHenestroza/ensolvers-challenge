@@ -60,10 +60,28 @@ table {
   border-spacing: 0;
 }
 
+// App Styles
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 90%;
+  height: 90vh;
+  padding: 0.5rem;
+  margin: 1rem auto;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+
 // Media Queries
 @media (min-width: 768px) {
   html {
     font-size: $font-size-medium;
+  }
+  .app {
+    max-width: 80%;
   }
 }
 
@@ -71,25 +89,16 @@ table {
   html {
     font-size: $font-size-large;
   }
+  .app {
+    max-width: 55%;
+  }
 }
 
 @media (min-width: 1200px) {
   html {
     font-size: $font-size-xlarge;
   }
-}
-
-// App Styles
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  max-width: 60%;
-  height: 90vh;
-  padding: 0.5rem;
-  margin: 1rem auto;
-  border: 1px solid $primary-color;
-  border-radius: 4px;
-  background-color: #fafafa;
+  .app {
+    max-width: 40%;
+  }
 }
