@@ -1,9 +1,12 @@
 import styles from "./TodoForm.module.scss";
 
-const TodoForm = () => {
+const TodoForm = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("Hola");
+    props.addTodo({
+      description: e.target.description.value,
+      completed: false,
+    });
   };
 
   return (
@@ -11,6 +14,7 @@ const TodoForm = () => {
       <input
         className={styles.todo_form__input}
         type="text"
+        name="description"
         placeholder="Add ToDo"
       />
       <input
