@@ -25,7 +25,7 @@ public class TodoApiApplication {
     private static void createDbIfNotExists(String user, String password) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306", user, password);
+            Connection con = DriverManager.getConnection(System.getenv("spring_datasource_url"), user, password);
             Statement stmt = con.createStatement();
             stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS ensolvers;");
             stmt.close();
@@ -38,7 +38,7 @@ public class TodoApiApplication {
     private static void createTodoTableIfNotExists(String user, String password) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ensolvers", user, password);
+            Connection con = DriverManager.getConnection(System.getenv("spring_datasource_url"), user, password);
             Statement stmt = con.createStatement();
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS `ensolvers`.`todos` (\n" +
                     "  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
@@ -57,7 +57,7 @@ public class TodoApiApplication {
     private static void createFolderTableIfNotExists(String user, String password) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ensolvers", user, password);
+            Connection con = DriverManager.getConnection(System.getenv("spring_datasource_url"), user, password);
             Statement stmt = con.createStatement();
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS `ensolvers`.`folders` (\n" +
                     "  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
