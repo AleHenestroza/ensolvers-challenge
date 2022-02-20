@@ -8,6 +8,7 @@ const NewTodo = (props) => {
       done: false,
       folderId: props.folderId,
     });
+    e.target.description.value = "";
   };
 
   return (

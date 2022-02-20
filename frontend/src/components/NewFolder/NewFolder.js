@@ -6,6 +6,7 @@ const NewFolder = (props) => {
     props.addFolder({
       name: e.target.name.value,
     });
+    e.target.name.value = "";
   };
   return (
     <form className={styles.folder_form} onSubmit={submitHandler}>

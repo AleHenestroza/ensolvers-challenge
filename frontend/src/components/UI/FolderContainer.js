@@ -9,7 +9,7 @@ const FolderContainer = (props) => {
   const getFolders = () => {
     const fetchedFolders = [];
     require("axios")
-      .get(`${process.env.REACT_APP_API_URL}/folders`)
+      .get(`${process.env.REACT_APP_API_URL}/folders`, { mode: "cors" })
       .then((response) => {
         response.data.forEach((folder) => {
           fetchedFolders.push(folder);
@@ -29,7 +29,9 @@ const FolderContainer = (props) => {
 
   const addFolder = (folder) => {
     require("axios")
-      .post(`${process.env.REACT_APP_API_URL}/folders`, folder)
+      .post(`${process.env.REACT_APP_API_URL}/folders`, folder, {
+        mode: "cors",
+      })
       .then((response) => {
         setFolders([...folders, response.data]);
       })
@@ -40,7 +42,9 @@ const FolderContainer = (props) => {
 
   const deleteFolder = (folder) => {
     require("axios")
-      .delete(`${process.env.REACT_APP_API_URL}/folders/${folder.id}`)
+      .delete(`${process.env.REACT_APP_API_URL}/folders/${folder.id}`, {
+        mode: "cors",
+      })
       .then((response) => {
         setFolders(folders.filter((f) => f.id !== folder.id));
       })
@@ -48,25 +52,6 @@ const FolderContainer = (props) => {
         console.log(err);
       });
   };
-
-  // const updateFolder = (folder) => {
-  //   require("axios")
-  //     .put(`${process.env.REACT_APP_API_URL}/folders`, folder)
-  //     .then((response) => {
-  //       setFolders(
-  //         folders.map((f) => {
-  //           if (f.id === folder.id) {
-  //             return response.data;
-  //           } else {
-  //             return f;
-  //           }
-  //         })
-  //       );
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   return (
     <div className={styles.folder_list}>

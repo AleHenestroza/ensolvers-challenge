@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Todo.module.scss";
 
 const Todo = (props) => {
@@ -6,27 +6,38 @@ const Todo = (props) => {
   const [isDone, setIsDone] = useState(props.todo.done);
   const [timer, setTimer] = useState(null);
 
+  // Update the description of the todo after the user has stopped typing
+  useEffect(() => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    const timer = setTimeout(() => {
+      props.updateTodo({
+        id: props.todo.id,
+        description: description,
+        done: isDone,
+        folderId: props.todo.folderId,
+      });
+    }, 1000);
+    setTimer(timer);
+  }, [description]);
+
   const inputChanged = (e) => {
     setDescription(e.target.value);
-    clearTimeout(timer);
-    const newTimer = setTimeout(() => {
-      updateTodo();
-    }, 500);
-
-    setTimer(newTimer);
   };
 
   const completeTodo = (e) => {
     setIsDone(e.target.checked);
-    updateTodo();
+    updateTodo({
+      id: props.todo.id,
+      description: description,
+      done: e.target.checked,
+      folderId: props.todo.folderId,
+    });
   };
 
-  const updateTodo = () => {
-    props.updateTodo({
-      ...props.todo,
-      description: description,
-      done: isDone,
-    });
+  const updateTodo = (todo) => {
+    props.updateTodo(todo);
   };
 
   const deleteTodo = () => {
