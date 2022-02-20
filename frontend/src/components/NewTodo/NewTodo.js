@@ -1,11 +1,12 @@
-import styles from "./TodoForm.module.scss";
+import styles from "./NewTodo.module.scss";
 
-const TodoForm = (props) => {
+const NewTodo = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     props.addTodo({
       description: e.target.description.value,
-      completed: false,
+      done: false,
+      folderId: props.folderId,
     });
   };
 
@@ -26,4 +27,4 @@ const TodoForm = (props) => {
   );
 };
 
-export default TodoForm;
+export default NewTodo;
