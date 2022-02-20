@@ -6,33 +6,38 @@ const Todo = (props) => {
   const [isDone, setIsDone] = useState(props.todo.done);
   const [timer, setTimer] = useState(null);
 
+  // Update the description of the todo after the user has stopped typing
   useEffect(() => {
-    updateTodo();
+    if (timer) {
+      clearTimeout(timer);
+    }
+    const timer = setTimeout(() => {
+      props.updateTodo({
+        id: props.todo.id,
+        description: description,
+        done: isDone,
+        folderId: props.todo.folderId,
+      });
+    }, 1000);
+    setTimer(timer);
   }, [description]);
 
-  const inputChanged = async (e) => {
-    await setDescription(e.target.value);
-
-    clearTimeout(timer);
-    setTimer(
-      setTimeout(() => {
-        updateTodo();
-      }, 250)
-    );
+  const inputChanged = (e) => {
+    setDescription(e.target.value);
   };
 
   const completeTodo = (e) => {
     setIsDone(e.target.checked);
-    updateTodo();
-  };
-
-  const updateTodo = () => {
-    props.updateTodo({
-      ...props.todo,
+    updateTodo({
+      id: props.todo.id,
       description: description,
-      done: isDone,
+      done: e.target.checked,
       folderId: props.todo.folderId,
     });
+  };
+
+  const updateTodo = (todo) => {
+    props.updateTodo(todo);
   };
 
   const deleteTodo = () => {
