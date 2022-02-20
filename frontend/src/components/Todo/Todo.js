@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Todo.module.scss";
 
 const Todo = (props) => {
@@ -6,14 +6,19 @@ const Todo = (props) => {
   const [isDone, setIsDone] = useState(props.todo.done);
   const [timer, setTimer] = useState(null);
 
-  const inputChanged = (e) => {
-    setDescription(e.target.value);
-    clearTimeout(timer);
-    const newTimer = setTimeout(() => {
-      updateTodo();
-    }, 500);
+  useEffect(() => {
+    updateTodo();
+  }, [description]);
 
-    setTimer(newTimer);
+  const inputChanged = async (e) => {
+    await setDescription(e.target.value);
+
+    clearTimeout(timer);
+    setTimer(
+      setTimeout(() => {
+        updateTodo();
+      }, 250)
+    );
   };
 
   const completeTodo = (e) => {
@@ -26,6 +31,7 @@ const Todo = (props) => {
       ...props.todo,
       description: description,
       done: isDone,
+      folderId: props.todo.folderId,
     });
   };
 
