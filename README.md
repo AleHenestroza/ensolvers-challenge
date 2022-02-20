@@ -32,3 +32,7 @@ Once Docker and Compose are installed, you can run this app with the following c
 Access the application by openning a browser and going to localhost
 
 The first time you run the app, it will take some time to download all of the required dependencies. It can take up to 10 minutes, based on the internet speed. Subsequent runs will start much much faster.
+
+## Note
+
+The docker-compose.yml file has the configuration for each service, they are all mapped to their default values (8080 for the backend, 80 for the nginx proxy and 3306 for the MySQL container). If you have any other service running on one of these ports, the `docker-compose up` command will throw an error.
