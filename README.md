@@ -1,6 +1,6 @@
-# To-Do App for the Ensolvers Challenge
+# To-Do App for the Ensolvers Implementation Challenge
 
-A simple To-Do application that let's you create, edit, complete and delete To-Do items.
+This is a To-Do management application, built with Spring Boot and React.
 
 ## Technologies used
 
@@ -15,11 +15,20 @@ A simple To-Do application that let's you create, edit, complete and delete To-D
 - Axios 2.1.4
 - MySQL 8.0.27
 - SASS
+- Docker & Docker Compose
 
 ## Requirements
 
-To run this application, the following must be installed:
+To run this application, you need to install [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/)
 
-- Java JDK 11
-- Node.js ^16.13
-- MySQL 8
+## Run the App
+
+Once Docker and Compose are installed, you can run this app with the following commands:
+
+`docker-compose build`
+
+`docker-compose up`
+
+Access the application by openning a browser and going to localhost
+
+The first time you run the app, it will take some time to download all of the required dependencies. It can take up to 10 minutes, based on the internet speed. Subsequent runs will start much much faster.
