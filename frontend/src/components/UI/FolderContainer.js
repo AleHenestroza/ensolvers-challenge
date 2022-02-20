@@ -49,30 +49,34 @@ const FolderContainer = (props) => {
       });
   };
 
-  const updateFolder = (folder) => {
-    require("axios")
-      .put(`${process.env.REACT_APP_API_URL}/folders`, folder)
-      .then((response) => {
-        setFolders(
-          folders.map((f) => {
-            if (f.id === folder.id) {
-              return response.data;
-            } else {
-              return f;
-            }
-          })
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const updateFolder = (folder) => {
+  //   require("axios")
+  //     .put(`${process.env.REACT_APP_API_URL}/folders`, folder)
+  //     .then((response) => {
+  //       setFolders(
+  //         folders.map((f) => {
+  //           if (f.id === folder.id) {
+  //             return response.data;
+  //           } else {
+  //             return f;
+  //           }
+  //         })
+  //       );
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <div className={styles.folder_list}>
       <NewFolder addFolder={addFolder} />
       <h2>Folders</h2>
-      <FolderList folders={folders} selectFolder={props.selectFolder} />
+      <FolderList
+        folders={folders}
+        selectFolder={props.selectFolder}
+        deleteFolder={deleteFolder}
+      />
     </div>
   );
 };

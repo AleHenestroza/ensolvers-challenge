@@ -9,6 +9,7 @@ const FolderList = (props) => {
             folder={folder}
             key={folder.id}
             selectFolder={props.selectFolder}
+            deleteFolder={props.deleteFolder}
           />
         );
       })}

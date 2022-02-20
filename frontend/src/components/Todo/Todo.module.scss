@@ -24,6 +24,7 @@
     }
   }
   .todo__description {
+    font-size: $font-size-sm;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

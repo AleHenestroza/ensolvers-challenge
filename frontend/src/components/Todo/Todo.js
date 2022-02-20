@@ -2,35 +2,52 @@ import { useState } from "react";
 import styles from "./Todo.module.scss";
 
 const Todo = (props) => {
+  const [description, setDescription] = useState(props.todo.description);
+  const [isDone, setIsDone] = useState(props.todo.done);
+  const [timer, setTimer] = useState(null);
+
+  const inputChanged = (e) => {
+    setDescription(e.target.value);
+    clearTimeout(timer);
+    const newTimer = setTimeout(() => {
+      updateTodo();
+    }, 500);
+
+    setTimer(newTimer);
+  };
+
+  const completeTodo = (e) => {
+    setIsDone(e.target.checked);
+    updateTodo();
+  };
+
   const updateTodo = () => {
     props.updateTodo({
       ...props.todo,
-      done: !props.todo.done,
+      description: description,
+      done: isDone,
     });
   };
+
+  const deleteTodo = () => {
+    props.deleteTodo(props.todo);
+  };
+
   return (
     <li className={styles.todo}>
       <input
         className={styles.todo__checkbox}
         type="checkbox"
-        checked={props.todo.done}
-        onChange={updateTodo}
+        checked={isDone}
+        onChange={completeTodo}
       />
       <input
         className={styles.todo__description}
         type="text"
-        value={props.todo.description}
-        onChange={(e) =>
-          props.updateTodo({
-            ...props.todo,
-            description: e.target.value,
-          })
-        }
+        value={description}
+        onChange={inputChanged}
       />
-      <span
-        className={styles.todo__delete}
-        onClick={() => props.deleteTodo(props.todo)}
-      >
+      <span className={styles.todo__delete} onClick={deleteTodo}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
