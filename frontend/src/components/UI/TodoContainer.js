@@ -10,7 +10,9 @@ const TodoContainer = (props) => {
   const getTodos = () => {
     const fetchedTodos = [];
     require("axios")
-      .get(`${process.env.REACT_APP_API_URL}/todos/${props.folder.id}`)
+      .get(`${process.env.REACT_APP_API_URL}/todos/${props.folder.id}`, {
+        mode: "cors",
+      })
       .then((response) => {
         response.data.forEach((todo) => {
           fetchedTodos.push(todo);
@@ -31,7 +33,7 @@ const TodoContainer = (props) => {
   // POST a ToDo to the API. The API will create a new ToDo and return it.
   const addTodo = (todo) => {
     require("axios")
-      .post(`${process.env.REACT_APP_API_URL}/todos`, todo)
+      .post(`${process.env.REACT_APP_API_URL}/todos`, todo, { mode: "cors" })
       .then((response) => {
         setTodos([...todos, response.data]);
       })
@@ -43,7 +45,9 @@ const TodoContainer = (props) => {
   // DELETE a ToDo from the API. The API will delete the ToDo and return it.
   const deleteTodo = (todo) => {
     require("axios")
-      .delete(`${process.env.REACT_APP_API_URL}/todos/${todo.id}`)
+      .delete(`${process.env.REACT_APP_API_URL}/todos/${todo.id}`, {
+        mode: "cors",
+      })
       .then((response) => {
         setTodos(todos.filter((t) => t.id !== todo.id));
       })
@@ -55,7 +59,7 @@ const TodoContainer = (props) => {
   // PUT a ToDo to the API. The API will update the ToDo and return it.
   const updateTodo = (todo) => {
     require("axios")
-      .put(`${process.env.REACT_APP_API_URL}/todos`, todo)
+      .put(`${process.env.REACT_APP_API_URL}/todos`, todo, { mode: "cors" })
       .then((response) => {
         setTodos(
           todos.map((t) => {
