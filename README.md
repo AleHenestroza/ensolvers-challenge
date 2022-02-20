@@ -1,6 +1,6 @@
 # To-Do App for the Ensolvers Implementation Challenge
 
-This is a To-Do management application, built with Spring Boot and React.
+This is a To-Do management application, built with Spring Boot and React, with a docker-compose setup to provide a Runtime Environment that works on any Operating System (that has Docker and Docker Compose installed).
 
 ## Technologies used
 
@@ -16,6 +16,7 @@ This is a To-Do management application, built with Spring Boot and React.
 - MySQL 8.0.27
 - SASS
 - Docker & Docker Compose
+- Nginx
 
 ## Requirements
 
