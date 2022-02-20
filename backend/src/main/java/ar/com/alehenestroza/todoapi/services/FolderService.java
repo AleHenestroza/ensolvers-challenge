@@ -2,6 +2,7 @@ package ar.com.alehenestroza.todoapi.services;
 
 import ar.com.alehenestroza.todoapi.repositories.FolderRepository;
 import ar.com.alehenestroza.todoapi.entities.Folder;
+import ar.com.alehenestroza.todoapi.repositories.TodoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +10,11 @@ import java.util.List;
 @Service
 public class FolderService {
     private final FolderRepository folderRepository;
+    private final TodoRepository todoRepository;
 
-    public FolderService(FolderRepository folderRepository) {
+    public FolderService(FolderRepository folderRepository, TodoRepository todoRepository) {
         this.folderRepository = folderRepository;
+        this.todoRepository = todoRepository;
     }
 
     public Folder createFolder(Folder folder) {
@@ -35,12 +38,14 @@ public class FolderService {
         return folder;
     }
 
+    // Delete folder and all todos in it
     public String deleteFolder(int id) {
-        try {
-            folderRepository.deleteById(id);
-        } catch (Exception e) {
-            return e.getMessage();
+        Folder folder = folderRepository.findById(id).orElse(null);
+        if (folder != null) {
+            todoRepository.deleteAll(folder.getTodos());
+            folderRepository.delete(folder);
+            return "Folder " + id + " deleted";
         }
-        return "Folder " + id + " deleted";
+        return "Folder " + id + " not found";
     }
 }

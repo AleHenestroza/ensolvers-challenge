@@ -44,7 +44,7 @@ public class TodoApiApplication {
                     "  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
                     "  `description` varchar(255) NOT NULL,\n" +
                     "  `is_done` tinyint(1) NOT NULL,\n" +
-                    "  `folder_id` int(11),\n" +
+                    "  `folder_id` int(11) NOT NULL,\n" +
                     "  PRIMARY KEY (`id`)\n" +
                     ") ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;");
             stmt.close();

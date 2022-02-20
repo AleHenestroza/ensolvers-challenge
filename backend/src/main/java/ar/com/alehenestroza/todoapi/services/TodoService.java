@@ -26,6 +26,10 @@ public class TodoService {
         return this.todoRepository.findAll();
     }
 
+    public List<Todo> getTodosByFolderId(int folderId) {
+        return this.todoRepository.findAllByFolderId(folderId);
+    }
+
     public Todo getTodoById(int id) {
         return this.todoRepository.findById(id).orElse(null);
     }

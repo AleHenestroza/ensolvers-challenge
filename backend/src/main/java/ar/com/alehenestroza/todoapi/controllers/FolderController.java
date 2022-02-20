@@ -32,8 +32,8 @@ public class FolderController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") int id) {
-        folderService.deleteFolder(id);
+    public String delete(@PathVariable("id") int id) {
+        return folderService.deleteFolder(id);
     }
 
     @PutMapping("/{id}")

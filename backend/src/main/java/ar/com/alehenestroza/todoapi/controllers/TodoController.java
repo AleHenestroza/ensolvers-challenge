@@ -21,14 +21,9 @@ public class TodoController {
         return this.todoService.addTodo(todo);
     }
 
-    @GetMapping
-    public List<Todo> getTodos() {
-        return this.todoService.getTodos();
-    }
-
-    @GetMapping("/{id}")
-    public Todo getTodo(@PathVariable int id) {
-        return this.todoService.getTodoById(id);
+    @GetMapping("/{folder_id}")
+    public List<Todo> getTodos(@PathVariable int folder_id) {
+        return this.todoService.getTodosByFolderId(folder_id);
     }
 
     @PutMapping
