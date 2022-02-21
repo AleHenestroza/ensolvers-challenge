@@ -1,6 +1,6 @@
 # To-Do App for the Ensolvers Implementation Challenge
 
-This is a To-Do management application, built with Spring Boot and React, with a docker-compose setup to provide a Runtime Environment that works on any Operating System (that has Docker and Docker Compose installed).
+Here is a solution to the Ensolvers Implementation Challenge: A To-Do application built with Spring Boot for the backend, React.js as the frontend library and MySQL for the database. The app is structured with docker-compose running 3 separate containers: a RESTful API that handles CRUD operations for the To-Dos and the Folders, a React application being served by an Nginx server and a MySQL container.
 
 ## Technologies used
 
@@ -20,7 +20,7 @@ This is a To-Do management application, built with Spring Boot and React, with a
 
 ## Requirements
 
-To run this application, you need to install [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/)
+To run this application, you need to have installed [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Run the App
 
@@ -32,7 +32,7 @@ Once Docker and Compose are installed, you can run this app with the following c
 
 Access the application by openning a browser and going to localhost
 
-The first time you run the app, it will take some time to download all of the required dependencies. It can take up to 10 minutes, based on the internet speed. Subsequent runs will start much much faster.
+The first time you run the app, it will take some time to download all of the required dependencies. It can take up to 10 minutes, based on the internet speed. The next times, the app will start much faster.
 
 ## Note
 
