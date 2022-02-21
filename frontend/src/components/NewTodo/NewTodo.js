@@ -3,12 +3,16 @@ import styles from "./NewTodo.module.scss";
 const NewTodo = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
-    props.addTodo({
-      description: e.target.description.value,
-      done: false,
-      folderId: props.folderId,
-    });
-    e.target.description.value = "";
+    if (e.target.description.value.length > 0) {
+      props.addTodo({
+        description: e.target.description.value,
+        done: false,
+        folderId: props.folderId,
+      });
+      e.target.description.value = "";
+    } else {
+      alert("Please enter a todo description");
+    }
   };
 
   return (

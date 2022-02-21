@@ -3,10 +3,14 @@ import styles from "./NewFolder.module.scss";
 const NewFolder = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
-    props.addFolder({
-      name: e.target.name.value,
-    });
-    e.target.name.value = "";
+    if (e.target.name.value.length > 0) {
+      props.addFolder({
+        name: e.target.name.value,
+      });
+      e.target.name.value = "";
+    } else {
+      alert("Please enter a folder name");
+    }
   };
   return (
     <form className={styles.folder_form} onSubmit={submitHandler}>

@@ -11,15 +11,15 @@ const Todo = (props) => {
     if (timer) {
       clearTimeout(timer);
     }
-    const timer = setTimeout(() => {
+    const newTimer = setTimeout(() => {
       props.updateTodo({
         id: props.todo.id,
         description: description,
         done: isDone,
         folderId: props.todo.folderId,
       });
-    }, 1000);
-    setTimer(timer);
+    }, 500);
+    setTimer(newTimer);
   }, [description]);
 
   const inputChanged = (e) => {

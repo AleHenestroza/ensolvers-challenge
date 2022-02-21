@@ -7,7 +7,7 @@ services:
       - MYSQL_DATABASE=ensolvers
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=admin
-      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - 3306:3306
     volumes:
