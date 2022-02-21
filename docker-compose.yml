@@ -12,6 +12,11 @@ services:
       - 3306:3306
     volumes:
       - ./db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-u", "admin", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   backend:
     container_name: backend
@@ -19,7 +24,7 @@ services:
       context: ./backend
     depends_on:
       db:
-        condition: service_started
+        condition: service_healthy
     environment:
       - spring_datasource_url=jdbc:mysql://db:3306/ensolvers
       - spring_datasource_username=admin
