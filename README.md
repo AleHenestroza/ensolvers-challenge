@@ -1,6 +1,6 @@
-# To-Do App for the Ensolvers Implementation Challenge
+# To-Do App
 
-Here is a solution to the Ensolvers Implementation Challenge: A To-Do application built with Spring Boot for the backend, React.js as the frontend library and MySQL for the database. The app is structured with docker-compose running 3 separate containers: a RESTful API that handles CRUD operations for the To-Dos and the Folders, a React application being served by an Nginx server and a MySQL container.
+A To-Do application built with Spring Boot for the backend, React.js as the frontend library and MySQL for the database. The app is structured with docker-compose running 3 separate containers: a RESTful API that handles CRUD operations for the To-Dos and the Folders, a React application being served by an Nginx server and a MySQL container.
 
 ## Technologies used
 
